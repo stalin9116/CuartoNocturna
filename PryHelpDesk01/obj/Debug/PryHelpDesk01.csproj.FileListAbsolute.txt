@@ -1,0 +1,17 @@
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\bin\Debug\PryHelpDesk01.exe.config
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\bin\Debug\PryHelpDesk01.exe
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\bin\Debug\PryHelpDesk01.pdb
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\bin\Debug\AccesoDatos.dll
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\bin\Debug\LogicaNegocios.dll
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\bin\Debug\AccesoDatos.pdb
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\bin\Debug\AccesoDatos.dll.config
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\bin\Debug\LogicaNegocios.pdb
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\obj\Debug\PryHelpDesk01.csprojAssemblyReference.cache
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\obj\Debug\PryHelpDesk01.Formularios.frmLogin.resources
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\obj\Debug\PryHelpDesk01.Properties.Resources.resources
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\obj\Debug\PryHelpDesk01.csproj.GenerateResource.cache
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\obj\Debug\PryHelpDesk01.csproj.CoreCompileInputs.cache
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\obj\Debug\PryHelpDesk01.csproj.CopyComplete
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\obj\Debug\PryHelpDesk01.exe
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\obj\Debug\PryHelpDesk01.pdb
+C:\Users\IT\source\repos\PryHelpDesk01\PryHelpDesk01\obj\Debug\PryHelpDesk01.Formularios.fmrUsuario.resources

@@ -1,0 +1,10 @@
+C:\Users\IT\source\repos\PryHelpDesk01\LogicaNegocios\bin\Debug\LogicaNegocios.dll
+C:\Users\IT\source\repos\PryHelpDesk01\LogicaNegocios\bin\Debug\LogicaNegocios.pdb
+C:\Users\IT\source\repos\PryHelpDesk01\LogicaNegocios\bin\Debug\AccesoDatos.dll
+C:\Users\IT\source\repos\PryHelpDesk01\LogicaNegocios\bin\Debug\AccesoDatos.pdb
+C:\Users\IT\source\repos\PryHelpDesk01\LogicaNegocios\bin\Debug\AccesoDatos.dll.config
+C:\Users\IT\source\repos\PryHelpDesk01\LogicaNegocios\obj\Debug\LogicaNegocios.csprojAssemblyReference.cache
+C:\Users\IT\source\repos\PryHelpDesk01\LogicaNegocios\obj\Debug\LogicaNegocios.csproj.CoreCompileInputs.cache
+C:\Users\IT\source\repos\PryHelpDesk01\LogicaNegocios\obj\Debug\LogicaNegocios.csproj.CopyComplete
+C:\Users\IT\source\repos\PryHelpDesk01\LogicaNegocios\obj\Debug\LogicaNegocios.dll
+C:\Users\IT\source\repos\PryHelpDesk01\LogicaNegocios\obj\Debug\LogicaNegocios.pdb

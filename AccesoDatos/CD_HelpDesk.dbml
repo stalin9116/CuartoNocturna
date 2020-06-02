@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDDUIOHELPDESK01" Class="CD_HelpDeskDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=BDDUIOHELPDESK01;Integrated Security=True" SettingsObjectName="AccesoDatos.Properties.Settings" SettingsPropertyName="BDDUIOHELPDESK01ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TBL_ROL" Member="TBL_ROL">
+    <Type Name="TBL_ROL">
+      <Column Name="rol_id" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="rol_descripcion" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="rol_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="rol_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="TBL_ROL_TBL_USUARIO" Member="TBL_USUARIO" ThisKey="rol_id" OtherKey="rol_id" Type="TBL_USUARIO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_USUARIO" Member="TBL_USUARIO">
+    <Type Name="TBL_USUARIO">
+      <Column Name="usu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="usu_correo" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_password" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_apellidos" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_nombres" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="rol_id" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="TBL_ROL_TBL_USUARIO" Member="TBL_ROL" ThisKey="rol_id" OtherKey="rol_id" Type="TBL_ROL" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

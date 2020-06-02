@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="CD_HelpDesk">
+  <DataContextMoniker Name="/CD_HelpDeskDataContext" />
+  <nestedChildShapes>
+    <classShape Id="294ac163-9a90-4a36-98de-de0cf43781ee" absoluteBounds="0.75, 1.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/CD_HelpDeskDataContext/TBL_ROL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c570662c-763e-47b1-aded-cb1241c10d69" absoluteBounds="0.765, 1.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="81235665-6486-4696-b1f7-4a05e94b8b5c" absoluteBounds="3.5, 1, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/CD_HelpDeskDataContext/TBL_USUARIO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e90f315c-e935-407b-b7fb-b6139e611bbb" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.16429768880208); (3.5 : 2.16429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CD_HelpDeskDataContext/TBL_ROL/TBL_ROL_TBL_USUARIO" />
+      <nodes>
+        <classShapeMoniker Id="294ac163-9a90-4a36-98de-de0cf43781ee" />
+        <classShapeMoniker Id="81235665-6486-4696-b1f7-4a05e94b8b5c" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
