@@ -83,13 +83,14 @@ namespace LogicaNegocios
             {
                 dc = new CD_HelpDeskDataContext();
                 bool resul = false;
-
+                _infoUsuario.usu_status = 'A';
+                _infoUsuario.usu_add = DateTime.Now;
+                //Insertar en la base de datos
                 dc.TBL_USUARIO.InsertOnSubmit(_infoUsuario);
                 //Actualizar el contexto de datos
                 dc.SubmitChanges();
                 resul = true;
                 return resul;
-
             }
             catch (Exception ex)
             {
@@ -156,6 +157,7 @@ namespace LogicaNegocios
             {
                 bool resul = false;
                 _infoUsuario.usu_status = 'I';
+                _infoUsuario.usu_add = DateTime.Now;
                 //Actualizar el contexto de datos
                 dc.SubmitChanges();
                 resul = true;
@@ -166,6 +168,19 @@ namespace LogicaNegocios
                 throw new ArgumentException("Errorr al consultar los usuarios " + ex.Message);
             }
         }
+
+        public static bool validarCorreo(string correo)
+        {
+            bool resultado = false;
+            //Validacion
+            //Correo
+            resultado = true;
+            return resultado;
+
+        }
+
+
+
 
     }
 }

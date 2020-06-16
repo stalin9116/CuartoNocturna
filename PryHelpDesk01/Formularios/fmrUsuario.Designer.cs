@@ -47,6 +47,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.lblCodigo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gdvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,6 +58,7 @@
             this.gdvUsuarios.Name = "gdvUsuarios";
             this.gdvUsuarios.Size = new System.Drawing.Size(761, 150);
             this.gdvUsuarios.TabIndex = 0;
+            this.gdvUsuarios.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gdvUsuarios_RowHeaderMouseClick);
             // 
             // label1
             // 
@@ -128,6 +130,7 @@
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(235, 20);
             this.txtCorreo.TabIndex = 8;
+            this.txtCorreo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCorreo_MouseClick);
             // 
             // txtClave
             // 
@@ -135,6 +138,7 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(235, 20);
             this.txtClave.TabIndex = 9;
+            this.txtClave.UseSystemPasswordChar = true;
             // 
             // txtApellidos
             // 
@@ -166,6 +170,7 @@
             this.btnGuardar.TabIndex = 13;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnEliminar
             // 
@@ -175,6 +180,7 @@
             this.btnEliminar.TabIndex = 14;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnNuevo
             // 
@@ -210,11 +216,20 @@
             this.txtBuscar.Size = new System.Drawing.Size(269, 20);
             this.txtBuscar.TabIndex = 18;
             // 
+            // lblCodigo
+            // 
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.Location = new System.Drawing.Point(78, 259);
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(0, 13);
+            this.lblCodigo.TabIndex = 19;
+            // 
             // fmrUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 450);
+            this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label8);
@@ -264,5 +279,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Label lblCodigo;
     }
 }
