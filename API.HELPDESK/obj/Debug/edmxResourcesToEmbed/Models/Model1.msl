@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDDUIOHELPDESK01ModelStoreContainer" CdmEntityContainer="BDDUIOHELPDESK01Entities">
+    <EntitySetMapping Name="TBL_MAIL">
+      <EntityTypeMapping TypeName="BDDUIOHELPDESK01Model.TBL_MAIL">
+        <MappingFragment StoreEntitySet="TBL_MAIL">
+          <ScalarProperty Name="mus_id" ColumnName="mus_id" />
+          <ScalarProperty Name="mus_fecha" ColumnName="mus_fecha" />
+          <ScalarProperty Name="mus_correo" ColumnName="mus_correo" />
+          <ScalarProperty Name="mus_sendstatus" ColumnName="mus_sendstatus" />
+          <ScalarProperty Name="mus_errorstatus" ColumnName="mus_errorstatus" />
+          <ScalarProperty Name="mus_messageerror" ColumnName="mus_messageerror" />
+          <ScalarProperty Name="mus_status" ColumnName="mus_status" />
+          <ScalarProperty Name="mus_add" ColumnName="mus_add" />
+          <ScalarProperty Name="mus_nombre" ColumnName="mus_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_MAILCONFIG">
+      <EntityTypeMapping TypeName="BDDUIOHELPDESK01Model.TBL_MAILCONFIG">
+        <MappingFragment StoreEntitySet="TBL_MAILCONFIG">
+          <ScalarProperty Name="mai_id" ColumnName="mai_id" />
+          <ScalarProperty Name="mai_servidor" ColumnName="mai_servidor" />
+          <ScalarProperty Name="mai_puerto" ColumnName="mai_puerto" />
+          <ScalarProperty Name="mai_user" ColumnName="mai_user" />
+          <ScalarProperty Name="mai_password" ColumnName="mai_password" />
+          <ScalarProperty Name="mai_ssl" ColumnName="mai_ssl" />
+          <ScalarProperty Name="mai_status" ColumnName="mai_status" />
+          <ScalarProperty Name="mai_add" ColumnName="mai_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_ROL">
+      <EntityTypeMapping TypeName="BDDUIOHELPDESK01Model.TBL_ROL">
+        <MappingFragment StoreEntitySet="TBL_ROL">
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="rol_descripcion" ColumnName="rol_descripcion" />
+          <ScalarProperty Name="rol_status" ColumnName="rol_status" />
+          <ScalarProperty Name="rol_add" ColumnName="rol_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_USUARIO">
+      <EntityTypeMapping TypeName="BDDUIOHELPDESK01Model.TBL_USUARIO">
+        <MappingFragment StoreEntitySet="TBL_USUARIO">
+          <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+          <ScalarProperty Name="usu_correo" ColumnName="usu_correo" />
+          <ScalarProperty Name="usu_password" ColumnName="usu_password" />
+          <ScalarProperty Name="usu_apellidos" ColumnName="usu_apellidos" />
+          <ScalarProperty Name="usu_nombres" ColumnName="usu_nombres" />
+          <ScalarProperty Name="usu_status" ColumnName="usu_status" />
+          <ScalarProperty Name="usu_add" ColumnName="usu_add" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

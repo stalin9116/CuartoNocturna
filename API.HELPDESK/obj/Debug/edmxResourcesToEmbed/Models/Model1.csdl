@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDDUIOHELPDESK01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TBL_MAIL">
+    <Key>
+      <PropertyRef Name="mus_id" />
+    </Key>
+    <Property Name="mus_id" Type="Int32" Nullable="false" />
+    <Property Name="mus_fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="mus_correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mus_sendstatus" Type="Boolean" Nullable="false" />
+    <Property Name="mus_errorstatus" Type="Boolean" Nullable="false" />
+    <Property Name="mus_messageerror" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="mus_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="mus_add" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="mus_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_MAILCONFIG">
+    <Key>
+      <PropertyRef Name="mai_id" />
+    </Key>
+    <Property Name="mai_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mai_servidor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mai_puerto" Type="Int32" Nullable="false" />
+    <Property Name="mai_user" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mai_password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mai_ssl" Type="Boolean" Nullable="false" />
+    <Property Name="mai_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="mai_add" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="TBL_ROL">
+    <Key>
+      <PropertyRef Name="rol_id" />
+    </Key>
+    <Property Name="rol_id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rol_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="rol_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="rol_add" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TBL_USUARIO" Relationship="Self.Relationship1" FromRole="TBL_ROL" ToRole="TBL_USUARIO" />
+  </EntityType>
+  <EntityType Name="TBL_USUARIO">
+    <Key>
+      <PropertyRef Name="usu_id" />
+      <PropertyRef Name="rol_id" />
+    </Key>
+    <Property Name="usu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usu_correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="usu_password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="usu_apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="usu_nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="usu_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="usu_add" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="rol_id" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="TBL_ROL" Relationship="Self.Relationship1" FromRole="TBL_USUARIO" ToRole="TBL_ROL" />
+  </EntityType>
+  <Association Name="Relationship1">
+    <End Role="TBL_ROL" Type="Self.TBL_ROL" Multiplicity="1" />
+    <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_ROL">
+        <PropertyRef Name="rol_id" />
+      </Principal>
+      <Dependent Role="TBL_USUARIO">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDDUIOHELPDESK01Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBL_MAIL" EntityType="Self.TBL_MAIL" />
+    <EntitySet Name="TBL_MAILCONFIG" EntityType="Self.TBL_MAILCONFIG" />
+    <EntitySet Name="TBL_ROL" EntityType="Self.TBL_ROL" />
+    <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" />
+    <AssociationSet Name="Relationship1" Association="Self.Relationship1">
+      <End Role="TBL_ROL" EntitySet="TBL_ROL" />
+      <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

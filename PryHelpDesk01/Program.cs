@@ -16,7 +16,7 @@ namespace PryHelpDesk01
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Formularios.fmrUsuario());
+            Application.Run(new Formularios.frmSriProduccion());
         }
     }
 }

@@ -40,7 +40,7 @@ namespace PryHelpDesk01.Formularios
                 if (!string.IsNullOrEmpty(password))
                 {
                     TBL_USUARIO _infoUsuario = new TBL_USUARIO();
-                    _infoUsuario = LogicaUsuarios.getUsersxLogin(user, password);
+                    _infoUsuario = LogicaUsuarios.getUsersxLogin(user, LogicaNegocios.complementos.encriptar.GetMD5(password));
                     if (_infoUsuario != null)
                     {
                         MessageBox.Show("Bienvenido al sistema "+ _infoUsuario.usu_correo + "\nRol Usuario "+ _infoUsuario.TBL_ROL.rol_descripcion, "Sistema Help Desk", MessageBoxButtons.OK, MessageBoxIcon.Information);

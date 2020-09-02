@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegocios", "LogicaNegocios\LogicaNegocios.csproj", "{62D04424-2508-4D2F-A7C9-38121F2BDC36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsServiceCorreo", "WindowsServiceCorreo\WindowsServiceCorreo.csproj", "{A605D931-5CB3-48BA-94F5-592FA2D7528E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.HELPDESK", "API.HELPDESK\API.HELPDESK.csproj", "{F6B92ADB-5688-427B-B653-B19310E448DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{62D04424-2508-4D2F-A7C9-38121F2BDC36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62D04424-2508-4D2F-A7C9-38121F2BDC36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62D04424-2508-4D2F-A7C9-38121F2BDC36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A605D931-5CB3-48BA-94F5-592FA2D7528E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A605D931-5CB3-48BA-94F5-592FA2D7528E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A605D931-5CB3-48BA-94F5-592FA2D7528E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A605D931-5CB3-48BA-94F5-592FA2D7528E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6B92ADB-5688-427B-B653-B19310E448DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6B92ADB-5688-427B-B653-B19310E448DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6B92ADB-5688-427B-B653-B19310E448DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6B92ADB-5688-427B-B653-B19310E448DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

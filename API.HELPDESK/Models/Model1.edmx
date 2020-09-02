@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BDDUIOHELPDESK01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_MAIL">
+          <Key>
+            <PropertyRef Name="mus_id" />
+          </Key>
+          <Property Name="mus_id" Type="int" Nullable="false" />
+          <Property Name="mus_fecha" Type="datetime" Nullable="false" />
+          <Property Name="mus_correo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mus_sendstatus" Type="bit" Nullable="false" />
+          <Property Name="mus_errorstatus" Type="bit" Nullable="false" />
+          <Property Name="mus_messageerror" Type="nvarchar" MaxLength="200" />
+          <Property Name="mus_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="mus_add" Type="datetime" Nullable="false" />
+          <Property Name="mus_nombre" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TBL_MAILCONFIG">
+          <Key>
+            <PropertyRef Name="mai_id" />
+          </Key>
+          <Property Name="mai_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mai_servidor" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="mai_puerto" Type="int" Nullable="false" />
+          <Property Name="mai_user" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="mai_password" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="mai_ssl" Type="bit" Nullable="false" />
+          <Property Name="mai_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="mai_add" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ROL">
+          <Key>
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="rol_id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rol_descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="rol_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="rol_add" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIO">
+          <Key>
+            <PropertyRef Name="usu_id" />
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="usu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="usu_password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="usu_apellidos" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="usu_nombres" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="usu_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="usu_add" Type="datetime" Nullable="false" />
+          <Property Name="rol_id" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="Relationship1">
+          <End Role="TBL_ROL" Type="Self.TBL_ROL" Multiplicity="1" />
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ROL">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDDUIOHELPDESK01ModelStoreContainer">
+          <EntitySet Name="TBL_MAIL" EntityType="Self.TBL_MAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MAILCONFIG" EntityType="Self.TBL_MAILCONFIG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ROL" EntityType="Self.TBL_ROL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Relationship1" Association="Self.Relationship1">
+            <End Role="TBL_ROL" EntitySet="TBL_ROL" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDDUIOHELPDESK01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBL_MAIL">
+          <Key>
+            <PropertyRef Name="mus_id" />
+          </Key>
+          <Property Name="mus_id" Type="Int32" Nullable="false" />
+          <Property Name="mus_fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mus_correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mus_sendstatus" Type="Boolean" Nullable="false" />
+          <Property Name="mus_errorstatus" Type="Boolean" Nullable="false" />
+          <Property Name="mus_messageerror" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="mus_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="mus_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mus_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_MAILCONFIG">
+          <Key>
+            <PropertyRef Name="mai_id" />
+          </Key>
+          <Property Name="mai_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mai_servidor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mai_puerto" Type="Int32" Nullable="false" />
+          <Property Name="mai_user" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mai_password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mai_ssl" Type="Boolean" Nullable="false" />
+          <Property Name="mai_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="mai_add" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TBL_ROL">
+          <Key>
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="rol_id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rol_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rol_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="rol_add" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TBL_USUARIO" Relationship="Self.Relationship1" FromRole="TBL_ROL" ToRole="TBL_USUARIO" />
+        </EntityType>
+        <EntityType Name="TBL_USUARIO">
+          <Key>
+            <PropertyRef Name="usu_id" />
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="usu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usu_password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usu_apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usu_nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usu_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="usu_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="rol_id" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="TBL_ROL" Relationship="Self.Relationship1" FromRole="TBL_USUARIO" ToRole="TBL_ROL" />
+        </EntityType>
+        <Association Name="Relationship1">
+          <End Role="TBL_ROL" Type="Self.TBL_ROL" Multiplicity="1" />
+          <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ROL">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="TBL_USUARIO">
+              <PropertyRef Name="rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDDUIOHELPDESK01Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_MAIL" EntityType="Self.TBL_MAIL" />
+          <EntitySet Name="TBL_MAILCONFIG" EntityType="Self.TBL_MAILCONFIG" />
+          <EntitySet Name="TBL_ROL" EntityType="Self.TBL_ROL" />
+          <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" />
+          <AssociationSet Name="Relationship1" Association="Self.Relationship1">
+            <End Role="TBL_ROL" EntitySet="TBL_ROL" />
+            <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDDUIOHELPDESK01ModelStoreContainer" CdmEntityContainer="BDDUIOHELPDESK01Entities">
+          <EntitySetMapping Name="TBL_MAIL">
+            <EntityTypeMapping TypeName="BDDUIOHELPDESK01Model.TBL_MAIL">
+              <MappingFragment StoreEntitySet="TBL_MAIL">
+                <ScalarProperty Name="mus_id" ColumnName="mus_id" />
+                <ScalarProperty Name="mus_fecha" ColumnName="mus_fecha" />
+                <ScalarProperty Name="mus_correo" ColumnName="mus_correo" />
+                <ScalarProperty Name="mus_sendstatus" ColumnName="mus_sendstatus" />
+                <ScalarProperty Name="mus_errorstatus" ColumnName="mus_errorstatus" />
+                <ScalarProperty Name="mus_messageerror" ColumnName="mus_messageerror" />
+                <ScalarProperty Name="mus_status" ColumnName="mus_status" />
+                <ScalarProperty Name="mus_add" ColumnName="mus_add" />
+                <ScalarProperty Name="mus_nombre" ColumnName="mus_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MAILCONFIG">
+            <EntityTypeMapping TypeName="BDDUIOHELPDESK01Model.TBL_MAILCONFIG">
+              <MappingFragment StoreEntitySet="TBL_MAILCONFIG">
+                <ScalarProperty Name="mai_id" ColumnName="mai_id" />
+                <ScalarProperty Name="mai_servidor" ColumnName="mai_servidor" />
+                <ScalarProperty Name="mai_puerto" ColumnName="mai_puerto" />
+                <ScalarProperty Name="mai_user" ColumnName="mai_user" />
+                <ScalarProperty Name="mai_password" ColumnName="mai_password" />
+                <ScalarProperty Name="mai_ssl" ColumnName="mai_ssl" />
+                <ScalarProperty Name="mai_status" ColumnName="mai_status" />
+                <ScalarProperty Name="mai_add" ColumnName="mai_add" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ROL">
+            <EntityTypeMapping TypeName="BDDUIOHELPDESK01Model.TBL_ROL">
+              <MappingFragment StoreEntitySet="TBL_ROL">
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="rol_descripcion" ColumnName="rol_descripcion" />
+                <ScalarProperty Name="rol_status" ColumnName="rol_status" />
+                <ScalarProperty Name="rol_add" ColumnName="rol_add" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_USUARIO">
+            <EntityTypeMapping TypeName="BDDUIOHELPDESK01Model.TBL_USUARIO">
+              <MappingFragment StoreEntitySet="TBL_USUARIO">
+                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+                <ScalarProperty Name="usu_correo" ColumnName="usu_correo" />
+                <ScalarProperty Name="usu_password" ColumnName="usu_password" />
+                <ScalarProperty Name="usu_apellidos" ColumnName="usu_apellidos" />
+                <ScalarProperty Name="usu_nombres" ColumnName="usu_nombres" />
+                <ScalarProperty Name="usu_status" ColumnName="usu_status" />
+                <ScalarProperty Name="usu_add" ColumnName="usu_add" />
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

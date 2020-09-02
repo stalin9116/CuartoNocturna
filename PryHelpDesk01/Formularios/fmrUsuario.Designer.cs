@@ -45,9 +45,10 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbBuscar = new System.Windows.Forms.ComboBox();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gdvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -201,13 +202,19 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Buscar";
             // 
-            // comboBox2
+            // cmbBuscar
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(166, 217);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(147, 21);
-            this.comboBox2.TabIndex = 17;
+            this.cmbBuscar.FormattingEnabled = true;
+            this.cmbBuscar.Items.AddRange(new object[] {
+            "Todos",
+            "Correo",
+            "Apellidos",
+            "Nombres",
+            "Rol"});
+            this.cmbBuscar.Location = new System.Drawing.Point(166, 217);
+            this.cmbBuscar.Name = "cmbBuscar";
+            this.cmbBuscar.Size = new System.Drawing.Size(147, 21);
+            this.cmbBuscar.TabIndex = 17;
             // 
             // txtBuscar
             // 
@@ -224,14 +231,25 @@
             this.lblCodigo.Size = new System.Drawing.Size(0, 13);
             this.lblCodigo.TabIndex = 19;
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(595, 217);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 20;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // fmrUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 450);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.txtBuscar);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cmbBuscar);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.btnEliminar);
@@ -277,8 +295,9 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label lblCodigo;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }

@@ -29,6 +29,8 @@ namespace LogicaNegocios
             }
         }
 
+
+
         public static TBL_USUARIO getUsersXId(int idUsuario)
         {
             try
@@ -60,6 +62,58 @@ namespace LogicaNegocios
                 throw new ArgumentException("Error al consultar los usuarios " + ex.Message);
             }
         }
+
+        public static List<TBL_USUARIO> getUsersXNombres(string nombres)
+        {
+            try
+            {
+                dc = new CD_HelpDeskDataContext();
+                var usuarios = dc.TBL_USUARIO.Where(data => data.usu_status == 'A'
+                                                            && data.usu_nombres.StartsWith(nombres)).
+                                                            OrderBy(data => data.usu_id).
+                                                            ThenBy(data => data.usu_correo);
+                return usuarios.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al consultar los usuarios " + ex.Message);
+            }
+        }
+
+        public static List<TBL_USUARIO> getUsersXCorreo(string correo)
+        {
+            try
+            {
+                dc = new CD_HelpDeskDataContext();
+                var usuarios = dc.TBL_USUARIO.Where(data => data.usu_status == 'A'
+                                                            && data.usu_correo.StartsWith(correo)).
+                                                            OrderBy(data => data.usu_id).
+                                                            ThenBy(data => data.usu_correo);
+                return usuarios.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al consultar los usuarios " + ex.Message);
+            }
+        }
+
+        public static List<TBL_USUARIO> getUsersXRol(string rol)
+        {
+            try
+            {
+                dc = new CD_HelpDeskDataContext();
+                var usuarios = dc.TBL_USUARIO.Where(data => data.usu_status == 'A'
+                                                            && data.TBL_ROL.rol_descripcion.StartsWith(rol)).
+                                                            OrderBy(data => data.usu_id).
+                                                            ThenBy(data => data.usu_correo);
+                return usuarios.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al consultar los usuarios " + ex.Message);
+            }
+        }
+
 
         public static TBL_USUARIO getUsersxLogin(string email, string password)
         {
@@ -115,11 +169,50 @@ namespace LogicaNegocios
             }
         }
 
+        public static bool updateUser3(TBL_USUARIO _infoUsuario)
+        {
+            try
+            {
+                bool resul = false;
+                //Actualizar el contexto de datos
+                var result =dc.spModificarUsuario(_infoUsuario.usu_id, _infoUsuario.usu_correo, _infoUsuario.usu_password, _infoUsuario.usu_apellidos,_infoUsuario.usu_nombres, _infoUsuario.rol_id);
+                
+                dc.SubmitChanges();
+                resul = true;
+                return resul;
+
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al consultar los usuarios " + ex.Message);
+            }
+        }
+
+        public static bool updateUserPassword(TBL_USUARIO _infoUsuario)
+        {
+            try
+            {
+                bool resul = false;
+                //Actualizar el contexto de datos
+                dc.SubmitChanges();
+                resul = true;
+                return resul;
+
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al consultar los usuarios " + ex.Message);
+            }
+        }
+
         public static bool updateUser2(TBL_USUARIO _infoUsuario)
         {
             try
             {
                 bool resul = false;
+                dc = new CD_HelpDeskDataContext();
+                _infoUsuario.usu_add = DateTime.Now;
+
                 dc.ExecuteCommand("UPDATE [dbo].[TBL_USUARIO] " +
                 "SET [usu_correo] = {0} " +
                 " ,[usu_password] = {1} " +
@@ -137,10 +230,11 @@ namespace LogicaNegocios
                   _infoUsuario.rol_id,
                   _infoUsuario.usu_id
                 });
+
+               
                 //envia el comando dml al contexto
-                dc.Refresh(RefreshMode.KeepCurrentValues, dc.TBL_USUARIO);
-                //Actualizo el contexto de datos
-                dc.SubmitChanges();
+                dc.Refresh(RefreshMode.OverwriteCurrentValues, dc.TBL_USUARIO);
+               
                 resul = true;
                 return resul;
 

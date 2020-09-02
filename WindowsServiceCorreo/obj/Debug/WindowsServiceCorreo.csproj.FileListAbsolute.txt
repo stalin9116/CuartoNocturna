@@ -1,0 +1,8 @@
+C:\Users\IT\source\repos\PryHelpDesk01\WindowsServiceCorreo\bin\Debug\WindowsServiceCorreo.exe.config
+C:\Users\IT\source\repos\PryHelpDesk01\WindowsServiceCorreo\bin\Debug\WindowsServiceCorreo.exe
+C:\Users\IT\source\repos\PryHelpDesk01\WindowsServiceCorreo\bin\Debug\WindowsServiceCorreo.pdb
+C:\Users\IT\source\repos\PryHelpDesk01\WindowsServiceCorreo\obj\Debug\WindowsServiceCorreo.csproj.CoreCompileInputs.cache
+C:\Users\IT\source\repos\PryHelpDesk01\WindowsServiceCorreo\obj\Debug\WindowsServiceCorreo.exe
+C:\Users\IT\source\repos\PryHelpDesk01\WindowsServiceCorreo\obj\Debug\WindowsServiceCorreo.pdb
+C:\Users\IT\source\repos\PryHelpDesk01\WindowsServiceCorreo\obj\Debug\WindowsServiceCorreo.ProjectInstaller.resources
+C:\Users\IT\source\repos\PryHelpDesk01\WindowsServiceCorreo\obj\Debug\WindowsServiceCorreo.csproj.GenerateResource.cache

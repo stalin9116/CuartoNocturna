@@ -21,14 +21,18 @@ namespace PryHelpDesk01.Formularios
 
         private void fmrUsuario_Load(object sender, EventArgs e)
         {
-            cargarUsuarios();
+            List<TBL_USUARIO> _listaUsuarios = new List<TBL_USUARIO>();
+            _listaUsuarios = LogicaUsuarios.getAllUsers();
+            if (_listaUsuarios != null && _listaUsuarios.Count > 0)
+            {
+                cargarUsuarios(_listaUsuarios);
+            }
             cargarRoles();
         }
 
-        private void cargarUsuarios()
+        private void cargarUsuarios(List<TBL_USUARIO> _listaUsuarios)
         {
-            List<TBL_USUARIO> _listaUsuarios = new List<TBL_USUARIO>();
-            _listaUsuarios = LogicaUsuarios.getAllUsers();
+
             if (_listaUsuarios != null && _listaUsuarios.Count > 0)
             {
                 gdvUsuarios.DataSource = _listaUsuarios.Select(data => new
@@ -79,8 +83,14 @@ namespace PryHelpDesk01.Formularios
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             //validacion de campos nulls
-
-            saveUsuario();
+            if (!string.IsNullOrEmpty(lblCodigo.Text))
+            {
+                updateUsuario();
+            }
+            else
+            {
+                saveUsuario();
+            }
         }
 
         private void saveUsuario()
@@ -92,13 +102,15 @@ namespace PryHelpDesk01.Formularios
                 _infoUsuario.usu_apellidos = txtApellidos.Text.TrimEnd().TrimStart().ToUpper();
                 _infoUsuario.usu_nombres = txtNombres.Text.TrimEnd().TrimStart().ToUpper();
                 //Login MD5 sha1 Encriptacion
-                _infoUsuario.usu_password = txtClave.Text;
+                _infoUsuario.usu_password = LogicaNegocios.complementos.encriptar.GetMD5(txtClave.Text);
                 _infoUsuario.rol_id = Convert.ToByte(cmbRol.SelectedValue);
                 bool result = LogicaUsuarios.saveUser(_infoUsuario);
                 if (result)
                 {
                     MessageBox.Show("Usuario guardado correctamente", "Sistema HelpDesk", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarUsuarios();
+                    List<TBL_USUARIO> _listaUsuarios = new List<TBL_USUARIO>();
+                    _listaUsuarios = LogicaUsuarios.getAllUsers();
+                    cargarUsuarios(_listaUsuarios);
                     nuevoUsuario();
                 }
             }
@@ -107,6 +119,43 @@ namespace PryHelpDesk01.Formularios
                 MessageBox.Show("Error al guardar usuario", "Sistema HelpDesk", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void updateUsuario()
+        {
+            try
+            {
+                TBL_USUARIO _infoUsuario = new TBL_USUARIO();
+                //_infoUsuario = LogicaUsuarios.getUsersXId(int.Parse(lblCodigo.Text));
+                if (_infoUsuario != null)
+                {
+                    _infoUsuario.usu_id = Convert.ToInt32(lblCodigo.Text);
+                    _infoUsuario.usu_correo = txtCorreo.Text.TrimEnd().TrimStart();
+                    _infoUsuario.usu_apellidos = txtApellidos.Text.TrimEnd().TrimStart().ToUpper();
+                    _infoUsuario.usu_nombres = txtNombres.Text.TrimEnd().TrimStart().ToUpper();
+                    //Login MD5 sha1 Encriptacion
+                    if (!string.IsNullOrEmpty(_infoUsuario.usu_password = txtClave.Text))
+                    {
+                        _infoUsuario.usu_password = LogicaNegocios.complementos.encriptar.GetMD5(txtClave.Text);
+                    }
+                    _infoUsuario.rol_id = Convert.ToByte(cmbRol.SelectedValue);
+                    bool result = LogicaUsuarios.updateUser3(_infoUsuario);
+                    if (result)
+                    {
+                        MessageBox.Show("Usuario Modificado correctamente", "Sistema HelpDesk", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        List<TBL_USUARIO> _listaUsuarios = new List<TBL_USUARIO>();
+                        _listaUsuarios = LogicaUsuarios.getAllUsers();
+                        cargarUsuarios(_listaUsuarios);
+                        nuevoUsuario();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar usuario", "Sistema HelpDesk", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
 
         private void deleteUsuario()
         {
@@ -121,8 +170,10 @@ namespace PryHelpDesk01.Formularios
                     {
                         if (LogicaUsuarios.deleteUser(_infoUser))
                         {
-                            MessageBox.Show("Registro eliminado correctamente ");
-                            cargarUsuarios();
+                            MessageBox.Show("Registro eliminado correctamente jaja ");
+                            List<TBL_USUARIO> _listaUsuarios = new List<TBL_USUARIO>();
+                            _listaUsuarios = LogicaUsuarios.getAllUsers();
+                            cargarUsuarios(_listaUsuarios);
                             nuevoUsuario();
                         }
                     }
@@ -170,5 +221,46 @@ namespace PryHelpDesk01.Formularios
         {
             deleteUsuario();
         }
+
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            buscar(cmbBuscar.Text);
+        }
+
+        private void buscar(string op)
+        {
+            if (!string.IsNullOrEmpty(op))
+            {
+                List<TBL_USUARIO> _listaUsuarios = new List<TBL_USUARIO>();
+                string datoBuscar = txtBuscar.Text;
+                switch (op)
+                {
+                    case "Todos":
+                        _listaUsuarios = LogicaUsuarios.getAllUsers();
+                        cargarUsuarios(_listaUsuarios);
+                        txtBuscar.Clear();
+                        break;
+                    case "Nombres":
+                        _listaUsuarios = LogicaUsuarios.getUsersXNombres(datoBuscar);
+                        cargarUsuarios(_listaUsuarios);
+                        break;
+                    case "Correo":
+                        _listaUsuarios = LogicaUsuarios.getUsersXCorreo(datoBuscar);
+                        cargarUsuarios(_listaUsuarios);
+                        break;
+                    case "Apellidos":
+                        _listaUsuarios = LogicaUsuarios.getUsersXApellidos(datoBuscar);
+                        cargarUsuarios(_listaUsuarios);
+                        break;
+                    case "Rol":
+                        _listaUsuarios = LogicaUsuarios.getUsersXRol(datoBuscar);
+                        cargarUsuarios(_listaUsuarios);
+                        break;
+                } 
+            }
+
+        }
+
     }
 }

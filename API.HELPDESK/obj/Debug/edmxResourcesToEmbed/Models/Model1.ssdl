@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDDUIOHELPDESK01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TBL_MAIL">
+    <Key>
+      <PropertyRef Name="mus_id" />
+    </Key>
+    <Property Name="mus_id" Type="int" Nullable="false" />
+    <Property Name="mus_fecha" Type="datetime" Nullable="false" />
+    <Property Name="mus_correo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="mus_sendstatus" Type="bit" Nullable="false" />
+    <Property Name="mus_errorstatus" Type="bit" Nullable="false" />
+    <Property Name="mus_messageerror" Type="nvarchar" MaxLength="200" />
+    <Property Name="mus_status" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="mus_add" Type="datetime" Nullable="false" />
+    <Property Name="mus_nombre" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TBL_MAILCONFIG">
+    <Key>
+      <PropertyRef Name="mai_id" />
+    </Key>
+    <Property Name="mai_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mai_servidor" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="mai_puerto" Type="int" Nullable="false" />
+    <Property Name="mai_user" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="mai_password" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="mai_ssl" Type="bit" Nullable="false" />
+    <Property Name="mai_status" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="mai_add" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_ROL">
+    <Key>
+      <PropertyRef Name="rol_id" />
+    </Key>
+    <Property Name="rol_id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rol_descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="rol_status" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="rol_add" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_USUARIO">
+    <Key>
+      <PropertyRef Name="usu_id" />
+      <PropertyRef Name="rol_id" />
+    </Key>
+    <Property Name="usu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usu_correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="usu_password" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="usu_apellidos" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="usu_nombres" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="usu_status" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="usu_add" Type="datetime" Nullable="false" />
+    <Property Name="rol_id" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <Association Name="Relationship1">
+    <End Role="TBL_ROL" Type="Self.TBL_ROL" Multiplicity="1" />
+    <End Role="TBL_USUARIO" Type="Self.TBL_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_ROL">
+        <PropertyRef Name="rol_id" />
+      </Principal>
+      <Dependent Role="TBL_USUARIO">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDDUIOHELPDESK01ModelStoreContainer">
+    <EntitySet Name="TBL_MAIL" EntityType="Self.TBL_MAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_MAILCONFIG" EntityType="Self.TBL_MAILCONFIG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_ROL" EntityType="Self.TBL_ROL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_USUARIO" EntityType="Self.TBL_USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Relationship1" Association="Self.Relationship1">
+      <End Role="TBL_ROL" EntitySet="TBL_ROL" />
+      <End Role="TBL_USUARIO" EntitySet="TBL_USUARIO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -22,4 +22,15 @@
       <Association Name="TBL_ROL_TBL_USUARIO" Member="TBL_ROL" ThisKey="rol_id" OtherKey="rol_id" Type="TBL_ROL" IsForeignKey="true" />
     </Type>
   </Table>
+  <Function Name="dbo.spModificarUsuario" Method="spModificarUsuario">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="correo" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="password" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="apellidos" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="nombres" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="rol" Type="System.Byte" DbType="TinyInt" />
+    <ElementType Name="spModificarUsuarioResult">
+      <Column Name="" Member="Column1" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

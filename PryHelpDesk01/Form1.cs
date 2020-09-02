@@ -15,6 +15,13 @@ namespace PryHelpDesk01
         public Form1()
         {
             InitializeComponent();
+
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Formularios.fmrUsuario FrmUsuario = new Formularios.fmrUsuario();
+            FrmUsuario.Show();
         }
     }
 }
